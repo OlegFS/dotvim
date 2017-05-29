@@ -1,5 +1,7 @@
 set nocompatible              " required
 filetype off                  " required
+" 256 colors
+set t_Co=256
 "Paste without formatting
 set pastetoggle=<F2>
 " set the runtime path to include Vundle and initialize
@@ -26,6 +28,9 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'ivanov/vim-ipython'
 Plugin 'tpope/vim-surround'
+Plugin 'vim-scripts/mayansmoke'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 
 "
 "
@@ -71,6 +76,27 @@ if 'VIRTUAL_ENV' in os.environ:
   execfile(activate_this, dict(__file__=activate_this))
 EOF
 
+if has("autocmd")
+    " Enable file type detection.
+    " Use the default filetype settings, so that mail gets 'tw' set to 72,
+    " 'cindent' is on in C files, etc.
+    " Also load indent files, to automatically do language-dependent indenting.
+    filetype plugin indent on
+    
+    " When editing a file, always jump to the last known cursor position.
+    " Don't do it when the position is invalid or when inside an event handler
+    " (happens when dropping a file on gvim).
+    autocmd BufReadPost *
+    \ if line("'\"") > 0 && line("'\"") <= line("$") |
+    \   exe "normal g`\"" |
+    \ endif
+
+else
+    " if old vim, set vanilla autoindenting on
+    set autoindent
+
+endif " has("autocmd")
+
 "Open a tree if no file is specified
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
@@ -80,3 +106,14 @@ map <C-n> :NERDTreeToggle<CR>
 set clipboard=unnamed
 set guioptions-=r
 set guioptions-=L
+" make tab completion for files/buffers act like bash
+set wildmenu
+" show matching brackets, etc, for 1/10th of a second
+set showmatch
+set matchtime=1
+" display cursor co-ords at all times
+set ruler
+set cursorline
+" allow cursor to be positioned one char past end of line
+" and apply operations to all of selection including last char
+set selection=exclusive
