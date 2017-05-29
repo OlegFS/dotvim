@@ -117,3 +117,5 @@ set cursorline
 " allow cursor to be positioned one char past end of line
 " and apply operations to all of selection including last char
 set selection=exclusive
+"fix the airline
+set laststatus=2
