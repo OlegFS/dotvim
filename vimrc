@@ -31,6 +31,7 @@ Plugin 'tpope/vim-surround'
 Plugin 'vim-scripts/mayansmoke'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
+Plugin 'tpope/vim-fugitive'
 
 "
 "
