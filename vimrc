@@ -20,18 +20,24 @@ Plugin 'vim-syntastic/syntastic'
 
 "Plugin 'ltercation/vim-colors-solarized'
 
-Plugin 'jnurmine/Zenburn'
+
+"Plugin 'vim-scripts/pyte'
+"Plugin 'jnurmine/Zenburn'
+Plugin 'NLKNguyen/papercolor-theme'
 Plugin 'vim-scripts/indentpython.vim'
 Plugin 'nvie/vim-flake8'
 Plugin 'scrooloose/nerdtree'
 Plugin 'kien/ctrlp.vim'
 Plugin 'christoomey/vim-tmux-navigator'
-Plugin 'ivanov/vim-ipython'
+Plugin 'wmvanvliet/vim-ipython'
 Plugin 'tpope/vim-surround'
 Plugin 'vim-scripts/mayansmoke'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'tpope/vim-fugitive'
+Plugin 'majutsushi/tagbar' "class descriptions 
+Plugin 'cjrh/vim-conda'
+Plugin 'jpalardy/vim-slime'
 
 "
 "
@@ -48,12 +54,12 @@ au BufNewFile,BufRead *.py
     \ set autoindent|
     \ set fileformat=unix|
 
-
 "colors Zenburn
 set background=light
-colorscheme zenburn 
+colorscheme PaperColor 
 let python_highlight_all=1
 syntax on
+set t_Co=256
 set nu
 "Windows split hotkeys
 nnoremap <C-J> <C-W><C-J>
@@ -68,7 +74,6 @@ nnoremap <space> za
 set encoding=utf-8
 "python with virtualenv support
 py << EOF
-
 import os
 import sys
 if 'VIRTUAL_ENV' in os.environ:
@@ -120,3 +125,28 @@ set cursorline
 set selection=exclusive
 "fix the airline
 set laststatus=2
+"Tagbar shortcut
+nmap <F8> :TagbarToggle<CR>
+"Syntastic settings
+"
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [],'passive_filetypes': [] }
+nnoremap <C-w>E :SyntasticCheck<CR> :SyntasticToggleMode<CR>
+
+"set timeoutlen=10 ttimeoutlen=0
+let g:syntastic_always_populate_loc_list = 0
+let g:syntastic_auto_loc_list = 0
+let g:syntastic_check_on_open = 0
+let g:syntastic_check_on_wq = 0
+"colorcolumn
+set colorcolumn=81
+"set background=light
+set tw=79
+let g:slime_target = "tmux"
+let g:slime_python_ipython = 1
+let g:slime_paste_file = "$HOME/.slime_paste"
+" Disable some ipython related stuff"
+let g:ipy_monitor_subchannel = 0
