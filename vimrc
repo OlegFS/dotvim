@@ -17,12 +17,10 @@ Plugin 'gmarik/Vundle.vim'
 " " Add all your plugins here (note older versions of Vundle used Bundle
 " instead of Plugin)
 Plugin 'vim-syntastic/syntastic'
-
 "Plugin 'ltercation/vim-colors-solarized'
-
-
 "Plugin 'vim-scripts/pyte'
 "Plugin 'jnurmine/Zenburn'
+Plugin 'itchyny/calendar.vim'
 Plugin 'NLKNguyen/papercolor-theme'
 Plugin 'vim-scripts/indentpython.vim'
 Plugin 'nvie/vim-flake8'
@@ -150,3 +148,6 @@ let g:slime_python_ipython = 1
 let g:slime_paste_file = "$HOME/.slime_paste"
 " Disable some ipython related stuff"
 let g:ipy_monitor_subchannel = 0
+"" Google calendar sync
+let g:calendar_google_calendar = 1
+let g:calendar_google_task = 1
