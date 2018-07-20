@@ -1,5 +1,5 @@
 set nocompatible              " required
-filetype off                  " required
+filetype on                  " required
 " 256 colors
 set t_Co=256
 "Paste without formatting
@@ -71,15 +71,6 @@ nnoremap <space> za
 " UTF8 support
 set encoding=utf-8
 "python with virtualenv support
-py << EOF
-import os
-import sys
-if 'VIRTUAL_ENV' in os.environ:
-  project_base_dir = os.environ['VIRTUAL_ENV']
-  activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
-  execfile(activate_this, dict(__file__=activate_this))
-EOF
-
 if has("autocmd")
     " Enable file type detection.
     " Use the default filetype settings, so that mail gets 'tw' set to 72,
@@ -151,3 +142,5 @@ let g:ipy_monitor_subchannel = 0
 "" Google calendar sync
 let g:calendar_google_calendar = 1
 let g:calendar_google_task = 1
+" Python comments
+nnoremap ;c :.-1read ~/dotvim/py_comm_template.txt
