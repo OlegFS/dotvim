@@ -38,7 +38,8 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'majutsushi/tagbar' "class descriptions 
 Plugin 'cjrh/vim-conda'
 Plugin 'jpalardy/vim-slime'
-
+Plugin 'tomasiser/vim-code-dark'
+Plugin 'Yggdroot/indentLine'
 "
 "
 " " All of your Plugins must be added before the following line
@@ -55,8 +56,10 @@ au BufNewFile,BufRead *.py
     \ set fileformat=unix|
 
 "colors Zenburn
-set background=light
-colorscheme PaperColor 
+"set background=light
+"colorscheme PaperColor 
+colorscheme codedark
+let g:airline_theme = 'codedark'
 let python_highlight_all=1
 syntax on
 set t_Co=256
@@ -142,4 +145,4 @@ let g:slime_paste_file = "$HOME/.slime_paste"
 " Disable some ipython related stuff"
 let g:ipy_monitor_subchannel = 0
 " Python comments
-nnoremap ;c :.-1read ~/dotvim/py_comm_template.txt
+nnoremap ;c :.-1read ~/dotvim/py_comm_template.txt <Enter>
