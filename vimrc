@@ -43,14 +43,13 @@ Plugin 'jpalardy/vim-slime'
  call vundle#end()            " required
 " filetype plugin indent on    " required
 
-au BufNewFile,BufRead *.py
-    \ set tabstop=4 |
-    \ set softtabstop=4 |
-    \ set shiftwidth=4 |
-    \ set textwidth=79|
-    \ set expandtab|
-    \ set autoindent|
-    \ set fileformat=unix|
+set expandtab
+set tabstop=4 
+set softtabstop=4 
+set shiftwidth=4 
+set textwidth=79
+"set autoindent
+set fileformat=unix
 
 "colors Zenburn
 set background=light
