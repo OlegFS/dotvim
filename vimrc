@@ -27,7 +27,7 @@ Plugin 'nvie/vim-flake8'
 Plugin 'scrooloose/nerdtree'
 Plugin 'kien/ctrlp.vim'
 Plugin 'christoomey/vim-tmux-navigator'
-Plugin 'wmvanvliet/vim-ipython'
+"Plugin 'wmvanvliet/vim-ipython'
 Plugin 'tpope/vim-surround'
 Plugin 'vim-scripts/mayansmoke'
 Plugin 'vim-airline/vim-airline'
@@ -41,7 +41,7 @@ Plugin 'Yggdroot/indentLine'
 "
 "
 " " All of your Plugins must be added before the following line
- call vundle#end()            " required
+call vundle#end()            " required
 " filetype plugin indent on    " required
 
 au BufNewFile,BufRead *.py
@@ -147,3 +147,13 @@ let g:calendar_google_calendar = 1
 let g:calendar_google_task = 1
 " Python comments
 nnoremap ;c :.-1read ~/dotvim/py_comm_template.txt <Enter>
+set wildignore+=*sim/*,*.dat,*.swp,*.zip     " MacOSX/Linux
+let g:ctrlp_custom_ignore = {
+ \ 'dir':  '\v[\/]\sim$',
+  \ 'link': 'sim',
+  \ }
+let g:ctrlp_cache_dir = $HOME . '/.cache/ctrlp'
+
+if executable('ag')
+	  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+  endif
