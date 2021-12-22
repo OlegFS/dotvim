@@ -35,19 +35,29 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'tpope/vim-fugitive'
 Plugin 'majutsushi/tagbar' "class descriptions 
 Plugin 'cjrh/vim-conda'
-Plugin 'jpalardy/vim-slime'
 Plugin 'tomasiser/vim-code-dark'
 Plugin 'Yggdroot/indentLine'
+Plugin 'jpalardy/vim-slime'
+Plugin 'vim-vdebug/vdebug'
+Plugin 'davidhalter/jedi-vim'
+Plugin 'ervandew/supertab'
+
+"
+"Plugin 'hanschen/vim-ipython-cell'
 "
 "
 " " All of your Plugins must be added before the following line
 call vundle#end()            " required
 " filetype plugin indent on    " required
 
+filetype plugin indent on
+" show existing tab with 4 spaces width
+set tabstop=4
+" when indenting with '>', use 4 spaces width
+set shiftwidth=4
+" On pressing tab, insert 4 spaces
 set expandtab
-set tabstop=4 
-set softtabstop=4 
-set shiftwidth=4 
+
 set textwidth=79
 "set autoindent
 set fileformat=unix
@@ -137,7 +147,7 @@ set colorcolumn=81
 "set background=light
 set tw=79
 let g:slime_target = "tmux"
-let g:slime_python_ipython = 1
+"let g:slime_python_ipython = 1
 let g:slime_paste_file = "$HOME/.slime_paste"
 " Disable some ipython related stuff"
 let g:ipy_monitor_subchannel = 0
@@ -156,3 +166,13 @@ let g:ctrlp_cache_dir = $HOME . '/.cache/ctrlp'
 if executable('ag')
 	  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
   endif
+
+" Python comments
+nnoremap <silent> ,C :r  ~/dotvim/py_comm_template.txt <CR>
+" Slime ipython
+let g:slime_python_ipython = 1
+
+" make authomatically change the working directory
+set autochdir
+set list
+set listchars=tab:>-
